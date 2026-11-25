@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
             json: tags
         })
     })
-    await page.goto('https://conduit.bondaracademy.com/')
+    await page.goto('/')
 })
 test('first', async ({ page }) => {
     await expect(page.locator('.navbar-brand')).toContainText('conduit')

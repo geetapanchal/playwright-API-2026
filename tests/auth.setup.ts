@@ -10,21 +10,21 @@ setup('authenticate', async ({ page , request }) => {
         // get login token
         // POST using API
         const loginresponse = await request.post('https://conduit-api.bondaracademy.com/api/users/login', {
-            data: { "user": { "email": "admin@abc.com", "password": "asDF!@34" } }
+            data: { "user": { "email": process.env.TESTUSER, "password": process.env.TESTPASSWORD } }
         })
         expect(loginresponse.status()).toBe(200)
         const loginJSON = await loginresponse.json()
         const token = loginJSON.user.token
-        console.log(token)
+        console.log(`token in auth setup ${token}`)
 
         const storagestatefile = JSON.parse(fs.readFileSync(authFile,'utf-8'))
         storagestatefile.origins[0].localStorage[0].value = token
         fs.writeFileSync(authFile,JSON.stringify(storagestatefile,null,2))
-
     }
     else {
         // Perform authentication steps. Replace these actions with your own.
-        await page.goto('https://conduit.bondaracademy.com/')
+        console.log('in else')
+        await page.goto('/')
         await page.getByRole('link', { name: 'Sign in' }).click()
         await page.getByPlaceholder('Email').fill('admin@abc.com')
         await page.getByPlaceholder('Password').fill('asDF!@34')

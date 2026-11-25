@@ -13,7 +13,7 @@ test.beforeEach(async ({ page }) => {
             json: reponseJSON
         })
     })
-    await page.goto('https://conduit.bondaracademy.com/')
+    await page.goto('/')
 })
 
 test('first', async ({ page }) => {

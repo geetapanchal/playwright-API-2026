@@ -14,7 +14,7 @@ test('post and delete request', async ({ page, request }) => {
     console.log(token)
 
     // create new article with UI
-    await page.goto('https://conduit.bondaracademy.com/')
+    await page.goto('/')
     // await page.getByRole('link', { name: 'Sign in' }).click()
     // await page.getByPlaceholder('Email').fill('admin@abc.com')
     // await page.getByPlaceholder('Password').fill('asDF!@34')
@@ -48,7 +48,7 @@ test('post and delete request2', async ({ page, request }) => {
     const loginJSON = await loginresponse.json()
     const token = loginJSON.user.token
     console.log(token)
-    await page.goto('https://conduit.bondaracademy.com/')
+    await page.goto('/')
     await page.getByRole('link', { name: 'New Article' }).click()
     await page.getByRole('textbox', { name: 'Article Title' }).fill('three')
     await page.locator('[formcontrolname="description"]').fill('three')
