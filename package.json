@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "post-request": "npx playwright test tests/interceptBrowserAPIresp.spec.ts --project=chromium",
+    "apiAuthentication": "npx playwright test tests/APIAuthentication.spec.ts",
+    "all": "npm run post-request && piAuthentication"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/geetapanchal/playwright-API-2026.git"
@@ -17,6 +21,7 @@
   },
   "homepage": "https://github.com/geetapanchal/playwright-API-2026#readme",
   "devDependencies": {
+    "@faker-js/faker": "^10.6.0",
     "@playwright/test": "^1.65.1",
     "@types/node": "^26.6.6"
   }
